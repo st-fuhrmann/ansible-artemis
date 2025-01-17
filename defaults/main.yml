@@ -2,6 +2,11 @@
 # defaults file for artemis
 
 artemis_version: "2.9.0"
+artemis_major_version: "{{artemis_version.split('.')[0]}}"
+artemis_minor_version: "{{artemis_version.split('.')[1]}}"
+artemis_patch_version: "{{artemis_version.split('.')[2]}}" 
+artemis_greater_version_2_22: "{{ artemis_major_version|int > 2 or (artemis_major_version|int > 1 and artemis_minor_version|int>22) }}"
+artemis_xmlns: "{{'activemq.apache.org' if artemis_greater_version_2_22 else 'activemq.org' }}"
 artemis_download_url: "https://www.apache.org/dyn/closer.cgi?filename=activemq/activemq-artemis/{{ artemis_version }}/apache-artemis-{{ artemis_version }}-bin.tar.gz&action=download"
 
 artemis_group:
