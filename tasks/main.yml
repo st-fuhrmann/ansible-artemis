@@ -48,3 +48,4 @@
   with_items: "{{ artemis_brokers }}"
   loop_control:
     loop_var: broker
+    label: "{{broker.name}}"
